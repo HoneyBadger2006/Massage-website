@@ -5,6 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tẩm Quất Giác Hơi - Chú Huyện</title>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSy8adQF6rPg_Erh_L8sQwmEf2d1RebvlI",
+      authDomain: "massage-8c5fe.firebaseapp.com",
+      projectId: "massage-8c5fe",
+      storageBucket: "massage-8c5fe.appspot.com",
+      messagingSenderId: "954884872355",
+      appId: "1:954884872355:web:bde663ef742b2ae54e72e96",
+      measurementId: "G-ZZTTQH3QJM",
+      databaseURL: "https://massage-8c5fe-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.submitBooking = async function (e) {
+      e.preventDefault();
+
+      const recaptchaToken = grecaptcha.getResponse();
+      if (!recaptchaToken) {
+        alert("Vui lòng xác nhận bạn không phải robot.");
+        return;
+      }
+
+      const form = document.getElementById("bookingForm");
+      const name = form.name.value;
+      const phone = form.phone.value;
+      const service = form.service.value;
+      const time = form.time.value;
+
+      try {
+        await push(ref(db, "bookings"), {
+          name,
+          phone,
+          service,
+          time,
+          createdAt: new Date().toISOString()
+        });
+
+        window.location.href = "thankyou.html";
+      } catch (error) {
+        alert("Đã có lỗi khi gửi dữ liệu: " + error);
+      }
+    }
+  </script>
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -39,7 +88,6 @@
       text-decoration: none;
     }
     nav a:hover { background-color: #d2691e; }
-
     section {
       padding: 2rem;
       max-width: 900px;
@@ -56,14 +104,12 @@
       opacity: 1;
       transform: translateY(0);
     }
-
     footer {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 1rem;
     }
-
     input, textarea, select, button {
       width: 100%;
       padding: 0.6rem;
@@ -81,20 +127,17 @@
     button:hover {
       background-color: #8b4513;
     }
-
     img {
       max-width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
     }
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
       margin-top: 1.5rem;
     }
-
     .fade-in-img {
       opacity: 0;
       transform: translateY(30px);
@@ -107,7 +150,6 @@
   </style>
 </head>
 <body>
-
 <header>
   <h1>Tẩm Quất Giác Hơi – Chú Huyện</h1>
   <p>Chữa đau lưng, nhức mỏi – Giác hơi thư giãn</p>
@@ -145,7 +187,7 @@
 
 <section id="datlich">
   <h2>Đặt lịch hẹn</h2>
-  <form id="bookingForm">
+  <form id="bookingForm" onsubmit="submitBooking(event)">
     <label for="name">Họ tên:</label>
     <input type="text" id="name" name="name" required />
 
@@ -191,37 +233,6 @@
     });
   }, { threshold: 0.1 });
   sections.forEach(s => observer.observe(s));
-
-  const form = document.getElementById('bookingForm');
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const recaptchaToken = grecaptcha.getResponse();
-    if (!recaptchaToken) {
-      alert("Vui lòng xác nhận bạn không phải robot.");
-      return;
-    }
-
-    const formData = new FormData(form);
-    formData.append("g-recaptcha-response", recaptchaToken);
-
-    try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbzA1AK4dImtwNHxLS3MS6zkNIyqhYmBVuspyPAwfNX7xXpkcj-S_9lJJE0mR7tMeS5vgg/exec", {
-        method: "POST",
-        body: formData
-      });
-
-      const result = await res.json();
-      if (result.success) {
-        window.location.href = "thankyou.html";
-      } else {
-        alert("Lỗi: " + result.message);
-      }
-    } catch (err) {
-      alert("Có lỗi xảy ra khi gửi form.");
-    }
-  });
 </script>
-
 </body>
 </html>
