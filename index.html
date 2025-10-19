@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tẩm Quất Giác Hơi - Chú Huyện</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background-color: #fefefe;
+      color: #333;
+      animation: fadeInBody 1.2s ease;
+    }
+    @keyframes fadeInBody {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    header {
+      background: linear-gradient(135deg, #8b4513, #a0522d);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    nav {
+      background-color: #8b4513;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #d2691e;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border 0.3s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #a0522d;
+      outline: none;
+    }
+    button {
+      background-color: #a0522d;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+    button:hover {
+      background-color: #8b4513;
+      transform: scale(1.03);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.fade-in-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.fade-in-img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tẩm Quất Giác Hơi – Chú Huyện</h1>
+  <p>Chữa đau lưng, nhức mỏi – Giác hơi thư giãn</p>
+</header>
+
+<nav>
+  <a href="#gioithieu">Giới thiệu</a>
+  <a href="#dichvu">Dịch vụ</a>
+  <a href="#datlich">Đặt lịch</a>
+  <a href="#lienhe">Liên hệ</a>
+</nav>
+
+<section id="gioithieu">
+  <h2>Giới thiệu</h2>
+  <p>Với hơn 15 năm kinh nghiệm, chú Huyện chuyên tẩm quất, giác hơi, xoa bóp trị liệu cổ truyền. Phù hợp với người đau nhức mỏi, mệt mỏi do ngồi lâu, lao động nhiều.</p>
+  <p><strong>Địa chỉ:</strong> Số 3 ngõ 12 Thái Hà, Hà Nội</p>
+  <div class="gallery">
+  <img src="images/ẢNH 1.jpg" alt="Ảnh 1" class="fade-in-img" />
+  <img src="images/ẢNH 2.jpg" alt="Ảnh 2" class="fade-in-img" />
+  <img src="images/ẢNH 3.jpg" alt="Ảnh 3" class="fade-in-img" />
+  <img src="images/ẢNH 4.jpg" alt="Ảnh 4" class="fade-in-img" />
+  <img src="images/ẢNH 5.jpg" alt="Ảnh 5" class="fade-in-img" />
+</div>
+
+</section>
+
+<section id="dichvu">
+  <h2>Dịch vụ</h2>
+  <ul>
+    <li><strong>Giác hơi:</strong> 30 phút – 150.000đ</li>
+    <li><strong>Tẩm quất toàn thân:</strong> 60 phút – 250.000đ</li>
+    <li><strong>Xoa bóp trị liệu vai gáy:</strong> 45 phút – 200.000đ</li>
+    <li><strong>Day ấn huyệt – thư giãn:</strong> 60 phút – 300.000đ</li>
+  </ul>
+</section>
+
+<section id="datlich">
+  <h2>Đặt lịch hẹn</h2>
+  <form>
+    <label for="name">Họ tên:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="phone">Số điện thoại:</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="service">Chọn dịch vụ:</label>
+    <select id="service" name="service">
+      <option value="giachoi">Giác hơi</option>
+      <option value="tamquat">Tẩm quất toàn thân</option>
+      <option value="triLieu">Xoa bóp trị liệu</option>
+      <option value="anHuyet">Day ấn huyệt</option>
+    </select>
+
+    <label for="time">Chọn thời gian:</label>
+    <input type="datetime-local" id="time" name="time" required />
+
+    <button type="submit">Gửi yêu cầu (demo)</button>
+  </form>
+</section>
+
+<section id="lienhe">
+  <h2>Liên hệ</h2>
+  <p><strong>Số điện thoại:</strong> <a href="tel:0979153998">097 915 3998</a></p>
+  <p><strong>Email:</strong> <a href="mailto:congauhuyen10@gmail.com">congauhuyen10@gmail.com</a></p>
+  <p><strong>Địa chỉ:</strong> Số 3 ngõ 12 Thái Hà, Hà Nội</p>
+  <p><strong>Giờ làm việc:</strong> 8:00 – 20:00 mỗi ngày</p>
+</section>
+
+<footer>
+  <p>&copy; Tẩm Quất Giác Hơi – Chú Huyện</p>
+</footer>
+
+<script>
+  // Hiệu ứng khi cuộn tới từng section
+  const sections = document.querySelectorAll("section, .fade-in-img");
+  const options = {
+    threshold: 0.1
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
