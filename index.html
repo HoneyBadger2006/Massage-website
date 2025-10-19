@@ -15,19 +15,20 @@
       color: #333;
       animation: fadeInBody 1.2s ease;
     }
-    @keyframes fadeInBody { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes fadeInBody {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
     header {
       background: linear-gradient(135deg, #8b4513, #a0522d);
       color: white;
       padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     nav {
       background-color: #8b4513;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 10;
@@ -36,9 +37,9 @@
       color: white;
       padding: 1rem;
       text-decoration: none;
-      transition: background 0.3s ease;
     }
     nav a:hover { background-color: #d2691e; }
+
     section {
       padding: 2rem;
       max-width: 900px;
@@ -55,12 +56,14 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     footer {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 1rem;
     }
+
     input, textarea, select, button {
       width: 100%;
       padding: 0.6rem;
@@ -68,48 +71,39 @@
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
-      transition: border 0.3s ease;
-    }
-    input:focus, textarea:focus, select:focus {
-      border-color: #a0522d;
-      outline: none;
     }
     button {
       background-color: #a0522d;
       color: white;
       border: none;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s;
     }
     button:hover {
       background-color: #8b4513;
-      transform: scale(1.03);
     }
+
     img {
       max-width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
       margin-top: 1.5rem;
     }
+
     .fade-in-img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .fade-in-img.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .g-recaptcha { margin-top: 1rem; }
   </style>
 </head>
 <body>
@@ -128,14 +122,14 @@
 
 <section id="gioithieu">
   <h2>Giới thiệu</h2>
-  <p>Với hơn 15 năm kinh nghiệm, chú Huyện chuyên tẩm quất, giác hơi, xoa bóp trị liệu cổ truyền. Phù hợp với người đau nhức mỏi, mệt mỏi do ngồi lâu, lao động nhiều.</p>
+  <p>Với hơn 15 năm kinh nghiệm, chú Huyện chuyên tẩm quất, giác hơi, xoa bóp trị liệu cổ truyền.</p>
   <p><strong>Địa chỉ:</strong> Số 3 ngõ 12 Thái Hà, Hà Nội</p>
   <div class="gallery">
-    <img src="images/ẢNH 1.jpg" alt="Ảnh 1" class="fade-in-img" />
-    <img src="images/ẢNH 2.jpg" alt="Ảnh 2" class="fade-in-img" />
-    <img src="images/ẢNH 3.jpg" alt="Ảnh 3" class="fade-in-img" />
-    <img src="images/ẢNH 4.jpg" alt="Ảnh 4" class="fade-in-img" />
-    <img src="images/ẢNH 5.jpg" alt="Ảnh 5" class="fade-in-img" />
+    <img src="images/ẢNH 1.jpg" class="fade-in-img" alt="Ảnh 1" />
+    <img src="images/ẢNH 2.jpg" class="fade-in-img" alt="Ảnh 2" />
+    <img src="images/ẢNH 3.jpg" class="fade-in-img" alt="Ảnh 3" />
+    <img src="images/ẢNH 4.jpg" class="fade-in-img" alt="Ảnh 4" />
+    <img src="images/ẢNH 5.jpg" class="fade-in-img" alt="Ảnh 5" />
   </div>
 </section>
 
@@ -151,7 +145,7 @@
 
 <section id="datlich">
   <h2>Đặt lịch hẹn</h2>
-  <form id="booking-form">
+  <form id="bookingForm">
     <label for="name">Họ tên:</label>
     <input type="text" id="name" name="name" required />
 
@@ -160,17 +154,16 @@
 
     <label for="service">Chọn dịch vụ:</label>
     <select id="service" name="service">
-      <option value="giachoi">Giác hơi</option>
-      <option value="tamquat">Tẩm quất toàn thân</option>
-      <option value="triLieu">Xoa bóp trị liệu</option>
-      <option value="anHuyet">Day ấn huyệt</option>
+      <option value="Giác hơi">Giác hơi</option>
+      <option value="Tẩm quất toàn thân">Tẩm quất toàn thân</option>
+      <option value="Xoa bóp trị liệu">Xoa bóp trị liệu</option>
+      <option value="Day ấn huyệt">Day ấn huyệt</option>
     </select>
 
     <label for="time">Chọn thời gian:</label>
     <input type="datetime-local" id="time" name="time" required />
 
-    <div class="g-recaptcha" data-sitekey="6Lc22-8rAAAAAAM3OkfJBuUru334-WtFDL2q6KMEN"></div>
-
+    <div class="g-recaptcha" data-sitekey="6LdLae8rAAAAALbJnC1JaRbAgc1QaJQBmUHLQRSL"></div>
 
     <button type="submit">Gửi yêu cầu</button>
   </form>
@@ -190,39 +183,43 @@
 
 <script>
   const sections = document.querySelectorAll("section, .fade-in-img");
-  const options = { threshold: 0.1 };
-  const secretKey = "6Lc22-8rAAAAAEwFPZiR8ettlx5HX6WMDj5qXmn";
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
       }
     });
-  }, options);
-  sections.forEach(section => observer.observe(section));
+  }, { threshold: 0.1 });
+  sections.forEach(s => observer.observe(s));
 
-  // Gửi form với reCAPTCHA và fetch
-  document.getElementById("booking-form").addEventListener("submit", function(e) {
+  const form = document.getElementById('bookingForm');
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const recaptcha = document.querySelector('#g-recaptcha-response').value;
-    formData.append("g-recaptcha-response", recaptcha);
 
-    fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
-      method: "POST",
-      body: new URLSearchParams(formData)
-    })
-    .then(res => res.text())
-    .then(msg => {
-      alert("✅ " + msg);
-      form.reset();
-      grecaptcha.reset();
-    })
-    .catch(err => {
-      alert("❌ Có lỗi xảy ra: " + err.message);
-    });
+    const recaptchaToken = grecaptcha.getResponse();
+    if (!recaptchaToken) {
+      alert("Vui lòng xác nhận bạn không phải robot.");
+      return;
+    }
+
+    const formData = new FormData(form);
+    formData.append("g-recaptcha-response", recaptchaToken);
+
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbywLr1GSAapmRRQ0HSAogx9HILe2nd5DUpybmcevi5omvEZvwrRkywRyvlT7PX4q99Qhg/exec", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        window.location.href = "thankyou.html";
+      } else {
+        alert("Lỗi: " + result.message);
+      }
+    } catch (err) {
+      alert("Có lỗi xảy ra khi gửi form.");
+    }
   });
 </script>
 
